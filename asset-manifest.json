@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/JobHub/static/css/main.e6c13ad2.css",
+    "main.js": "/JobHub/static/js/main.8e64b074.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/JobHub/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/testLogo.png": "/JobHub/static/media/testLogo.3e44ceb8bd35fd2bb08d.png",
+    "index.html": "/JobHub/index.html",
+    "main.e6c13ad2.css.map": "/JobHub/static/css/main.e6c13ad2.css.map",
+    "main.8e64b074.js.map": "/JobHub/static/js/main.8e64b074.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/JobHub/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.8e64b074.js"
+  ]
+}
