@@ -1,10 +1,10 @@
-import Navbar from "../components/Navbar";
 import Layout from "../Layout";
+import RenderCompanies from "../components/RenderCompanies";
 
 const Home = () => {
     return ( 
         <Layout>
-            <Navbar />
+            <RenderCompanies />
         </Layout>
      );
 }

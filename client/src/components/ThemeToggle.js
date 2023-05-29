@@ -14,7 +14,6 @@ function ThemeToggle() {
   return (
     <IconButton onClick={handleThemeChange}>
         {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
-        {darkMode ? 'dark mode' : 'light mode'}
     </IconButton>
   );
 }

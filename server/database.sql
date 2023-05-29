@@ -14,6 +14,7 @@ CREATE TABLE Users (
 CREATE TABLE Companies (
     CompanyID SERIAL PRIMARY KEY,
     Name VARCHAR(100),
+    Image VARCHAR(255),
     Description TEXT,
     Location VARCHAR(100),
     Industry VARCHAR(100)

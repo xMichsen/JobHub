@@ -9,9 +9,9 @@ exports.createCompany = async (req, res) => {
     }
 
     try {
-        const { Name, Description, Location, Industry } = req.body;
-        const newCompany = await pool.query("INSERT INTO Companies (Name, Description, Location, Industry) VALUES($1, $2, $3, $4) RETURNING *",
-        [Name, Description, Location, Industry]);
+        const { Name, Image, Description, Location, Industry } = req.body;
+        const newCompany = await pool.query("INSERT INTO Companies (Name, Image, Description, Location, Industry) VALUES($1, $2, $3, $4, $5) RETURNING *",
+        [Name, Image, Description, Location, Industry]);
 
         res.json(newCompany.rows[0]);
     } 
