@@ -3,6 +3,11 @@ import { ThemeProvider } from '@mui/material/styles'
 import getTheme from "./theme";
 import { useState, createContext } from "react";
 import Home from "./home/Home";
+import Jobs from "./jobs/Jobs";
+import PostAJob from "./postajob/PostAJob";
+import AboutUs from "./aboutus/AboutUs";
+import ContactUs from "./contactus/ContactUs";
+import Login from "./Login/Login";
 
 export const ThemeContext = createContext();
 
@@ -16,7 +21,12 @@ function App() {
       <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
         <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Home />}></Route>
+              <Route path="/" element={<Home />} />
+              <Route path="/jobs" element={<Jobs />} />
+              <Route path="/postajob" element={<PostAJob />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/contact" element={<ContactUs />} />
+              <Route path="/login" element={<Login />} />
             </Routes>  
         </BrowserRouter>
       </ThemeContext.Provider>
