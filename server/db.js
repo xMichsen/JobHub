@@ -4,7 +4,7 @@ const pool = new Pool({
     password: "haslo",
     host: "localhost",
     port: 5432,
-    database: "JobHub"
+    database: "jobhub"
 })
 
 module.exports = pool;

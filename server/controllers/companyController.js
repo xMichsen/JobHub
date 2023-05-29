@@ -1,14 +1,7 @@
-const express = require('express');
-const router = express.Router();
 const pool = require("../db");
-const { body, validationResult } = require('express-validator');
+const { validationResult } = require('express-validator');
 
-router.post("/", 
-    body('Name').notEmpty().withMessage('Name is required'),
-    body('Description').notEmpty().withMessage('Description is required'),
-    body('Location').notEmpty().withMessage('Location is required'),
-    body('Industry').notEmpty().withMessage('Industry is required'),
-    async (req, res) => {
+exports.createCompany = async (req, res) => {
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -25,6 +18,14 @@ router.post("/",
     catch (err) {
         console.error(err.message);
     }
-});
+};
 
-module.exports = router;
+exports.getAllCompanies = async (req, res) => {
+    try {
+        const allCompanies = await pool.query("SELECT * FROM Companies");
+        res.json(allCompanies.rows);
+    } 
+    catch (err) {
+        console.error(err.message);
+    }
+};

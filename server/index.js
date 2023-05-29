@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const companyRoutes = require("./routes/createCompany");
+const companyRoutes = require("./routes/companyRoutes");
 
 //middleware
 app.use(cors());
