@@ -28,8 +28,6 @@ const LoginForm = observer(() => {
         catch (error) {
                 notify('Wrong email or password!', 'error'); 
         }
-        
-        console.log(userStore.isLoggedIn);
     };
 
   return (
@@ -54,7 +52,7 @@ const LoginForm = observer(() => {
               </Link>
             </Grid>
             <Grid item>
-              <Link to="/jobs" variant="body2" style={{textDecoration:"none", color:"#FFA500"}}>
+              <Link to="/register" variant="body2" style={{textDecoration:"none", color:"#FFA500"}}>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

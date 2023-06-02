@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.3
--- Dumped by pg_dump version 15.3
+-- Dumped from database version 10.23
+-- Dumped by pg_dump version 10.23
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -17,7 +17,21 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: -
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: 
 --
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
@@ -32,7 +46,7 @@ COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
 
 SET default_tablespace = '';
 
-SET default_table_access_method = heap;
+SET default_with_oids = false;
 
 --
 -- Name: applications; Type: TABLE; Schema: public; Owner: postgres
@@ -242,6 +256,16 @@ COPY public.companies (companyid, name, image, description, location, industry) 
 --
 
 COPY public.jobs (jobid, title, description, skillsrequired, location, salary, companyid, recruiterid) FROM stdin;
+1	Software Engineer	Develop, test, and maintain software	JavaScript, HTML, CSS	Warsaw	80000	1	1
+2	Data Analyst	Analyze and interpret complex data	SQL, Python, Excel	Krakow	70000	2	4
+3	Project Manager	Manage and oversee project execution	Leadership, Organization, Communication	Gdansk	90000	3	5
+4	Web Developer	Build and maintain websites	JavaScript, HTML, CSS	Wroclaw	75000	4	6
+5	UX Designer	Design user-friendly interfaces	Figma, Adobe XD, Sketch	Poznan	78000	5	7
+6	Database Administrator	Manage and maintain databases	SQL, PostgreSQL, MySQL	Lodz	85000	1	1
+7	Product Manager	Oversee product development	Leadership, Communication, Agile	Szczecin	88000	2	4
+8	Quality Assurance Analyst	Ensure software quality	Attention to detail, Communication, Testing tools	Bydgoszcz	72000	3	5
+9	DevOps Engineer	Collaborate with developers and IT staff	CI/CD, AWS, Docker	Torun	85000	4	6
+10	Systems Analyst	Analyze and improve computer systems	Analytical skills, Problem-solving, IT knowledge	Katowice	82000	5	7
 \.
 
 
@@ -252,6 +276,11 @@ COPY public.jobs (jobid, title, description, skillsrequired, location, salary, c
 COPY public.users (userid, firstname, lastname, email, password, role) FROM stdin;
 1	Michal	Sacharczuk	xmichsen@gmail.com	$2a$06$UpvBRMwb4NjvhnR6rhjS9.BdFvwYwk/5x1DVm48tnhdOSPD0d66Hu	admin
 2	Steve	Jobs	michalsacharczuk99@gmail.com	$2a$06$YpSURMJlMCpyZ8xZL3mgdeWsHcQ7c184m8KEjIwXB06d3mVcfbK5O	recruiter
+3	Test	Testowy	testowy@gmail.com	$2a$06$3Gchl4.pciP2Vl4NmRvdT.7060MNMrlKCBSZ8KM0WnlZrCZVAHzVi	user
+4	Joe	The recruiter	joe@gmail.com	$2a$06$TeacEywBZBj8tKk7l85LFO6wAiG2ZK5OAEUO6eZcFixmsuk0aqK66	recruiter
+5	Pablo	The recruiter	pablo@gmail.com	$2a$06$FdadougX.XoSehiuSc2nbe5MpPrF/zha8XfCiYF69YJZul5RnRcoC	recruiter
+6	Hank	The recruiter	hank@gmail.com	$2a$06$nWxeX9OOt8aJi4nCfPRH5.nijnVPjz81KPL1uTg1wDSFcrs1FHYRK	recruiter
+7	Adam	The recruiter	adam@gmail.com	$2a$06$WBZy2ifJH83ePZzOJ2em5u.GWIUcRzj5HQLdsUkKabhV7BhEAQfHW	recruiter
 \.
 
 
@@ -273,14 +302,14 @@ SELECT pg_catalog.setval('public.companies_companyid_seq', 6, true);
 -- Name: jobs_jobid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.jobs_jobid_seq', 1, false);
+SELECT pg_catalog.setval('public.jobs_jobid_seq', 10, true);
 
 
 --
 -- Name: users_userid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_userid_seq', 2, true);
+SELECT pg_catalog.setval('public.users_userid_seq', 7, true);
 
 
 --

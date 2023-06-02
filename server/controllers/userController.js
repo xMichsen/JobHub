@@ -23,15 +23,21 @@ exports.createUser = async (req, res) => {
     }
 };
 
-exports.getAllUsers = async (req, res) => {
+exports.getUserInfo = async (req, res) => {
     try {
-        const allUsers = await pool.query("SELECT * FROM Users");
-        res.json(allUsers.rows);
+        const userId = req.userId; // We get the userId from the auth middleware
+        const user = await pool.query("SELECT * FROM Users WHERE UserId = $1", [userId]);
+        if (user.rows.length === 0) {
+            return res.status(404).json("User not found");
+        }
+        res.json(user.rows[0]);
     } 
     catch (err) {
         console.error(err.message);
+        res.status(500).json("Server Error");
     }
 };
+
 
 exports.loginUser = async (req, res) => {
     const { Email, Password } = req.body;
@@ -56,7 +62,16 @@ exports.loginUser = async (req, res) => {
         );
 
         // Return the token
-        res.json({ token });
+        res.json({ 
+            token, 
+            user: {
+                firstName: user.rows[0].firstname,
+                lastName: user.rows[0].lastname,
+                email: user.rows[0].email,
+                role: user.rows[0].role
+                // dodaj tutaj inne dane, które chcesz zwrócić
+            } 
+        });
     } 
     catch (err) {
         console.error(err.message);
