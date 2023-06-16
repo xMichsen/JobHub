@@ -17,16 +17,16 @@ const Navbar = observer(() => {
   ];  
 
   return ( 
-    <Grid container direction={{ xs:'column', sm:'row'}} position={{md:"sticky"}} top={{md:0}} spacing={{ xs:2, sm: 2, md: 3}} bgcolor="secondary.main" alignItems="center" justifyContent="center" sx={{paddingBottom:2, width:"100%", zIndex:10000, boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)'}}>
+    <Grid container direction={{ xs:'column', sm:'row'}} position={{md:"sticky"}} top={{md:-12}} spacing={{ xs:2, sm: 2, md: 3}} bgcolor="secondary.main" alignItems="center" justifyContent="center" sx={{paddingBottom:1,width:"100%", zIndex:10, boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)'}}>
       <Grid item xs={12} sm={'auto'}>
-        <Typography fontFamily="fantasy" variant='h3' component={Link} to="/" color="primary.logo" marginRight={{md: 10}} sx={{textDecoration:'none', transition: 'font-size 0.3s', '&:hover': {fontSize: '3.5em',} }}>JobHub</Typography>
+        <Typography fontFamily="fantasy" variant='h4' component={Link} to="/" color="primary.logo" marginRight={{md: 10}} sx={{textDecoration:'none', transition: 'font-size 0.3s', '&:hover': {fontSize: '2.3em',} }}>JobHub</Typography>
       </Grid>
       
       <Grid item xs={12} sm={'auto'} container justifyContent="center" spacing={2}>
         {navbarItems.map((item, index) => (
           (!item.requiresAuth || userStore.isLoggedIn) && (
             <Grid item key={index}>
-              <Fab component={Link} to={item.path}  color='primary' variant='extended' sx={{borderRadius:3, transition: "transform 0.3s", '&:hover': {transform: "scale(1.2)"}}}>
+              <Fab component={Link} size='medium' to={item.path}  color='primary' variant='extended' sx={{borderRadius:2, transition: "transform 0.3s", '&:hover': {transform: "scale(1.2)"}}}>
                 {item.label}
               </Fab>
             </Grid> )

@@ -45,15 +45,15 @@ const AboutUs = () => {
         <Layout>
             <Grid container direction="column" alignItems="center" justifyContent="center">
                 <Grid item xs={12} md={6}>
-                    <Typography variant="h5" sx={{ textAlign: "center", marginTop: 5 }}>
-                        How can we assist you?
+                    <Typography variant="h4" fontFamily="fantasy" sx={{ textAlign: "center", marginTop: 5 }}>
+                        About Us
                     </Typography>
                 </Grid>
 
                 <Grid item container xs={12} md={8} justifyContent="center" spacing={1}>
                     {icons.map((item, index) => (
                         <Grid item xs={2} sm={1} key={index}>
-                            <IconButton onClick={() => changeSection(item.text)}>
+                            <IconButton disableRipple color="primary" onClick={() => changeSection(item.text)}>
                                 <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", transition: "all 0.3s ease", '&:hover': { transform: 'scale(1.1)' }}}>
                                     <item.icon  sx={{ fontSize: {xs: 60, sm: 80} }} />
                                     <Typography variant="body2">{item.text}</Typography>

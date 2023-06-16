@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { getAllJobs } from "../apiCalls/getJobs";
 
 class JobsStore {
-    jobs = {};
+    jobs = [];
 
     constructor(){
         makeAutoObservable(this);
@@ -11,8 +11,18 @@ class JobsStore {
 
     fetchJobs = async () => {
         const data = await getAllJobs();
+        this.setJobs(data); 
+    }
+
+    get getJobs() {
+        return this.jobs;
+    }
+
+    setJobs(data) {
         this.jobs = data;
     }
+
+    
 
 }
 const jobStore = new JobsStore();

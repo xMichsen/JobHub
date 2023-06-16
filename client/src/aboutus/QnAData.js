@@ -34,7 +34,6 @@ export const faqData = [
       question: "Can I set up job alerts?",
       answer: "Yes, you can set up job alerts in your account settings. You will receive notifications when new jobs that match your preferences are posted.",
     },
-    // ... add more as needed
 ];
 
 export const postJobsData = [
@@ -50,7 +49,6 @@ export const postJobsData = [
       question: "Can I edit my job post after it has been published?",
       answer: "Yes, you can edit your job post at any time from your account dashboard.",
     },
-    // ... add more as needed
 ];
 
 export const activitiesData = [
@@ -62,7 +60,6 @@ export const activitiesData = [
       question: "Where can I see my activities?",
       answer: "You can see your activities in your account dashboard.",
     },
-    // ... add more as needed
 ];
 
 export const aboutUsData = [
@@ -74,6 +71,5 @@ export const aboutUsData = [
       question: "What is our mission?",
       answer: "Our mission is to help job seekers find their dream jobs and help employers find the perfect candidates for their teams.",
     },
-    // ... add more as needed
 ];
 

@@ -29,7 +29,7 @@ const RegisterForm = () => {
             navigate("/login");
             
         } catch (error) {
-            notify('Empty fields or password does not have: one big and small letter, number, special character, 8 characters long');
+            notify('Empty fields or password does not have: one big and small letter, number, special character, 8 characters long', 'error');
         }
     }
 

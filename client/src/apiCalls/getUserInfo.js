@@ -11,7 +11,6 @@ export const getUserInfo = async (token) => {
   } 
   
   catch (error) {
-    console.error(error);
     throw error;
   }
 };

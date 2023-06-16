@@ -1,17 +1,24 @@
 import { observer } from "mobx-react";
 import jobStore from "../stores/jobStore";
 import { Box, Typography, Card, CardContent, Grid, Container } from "@mui/material";
-import JobInfo from "./JobInfo";
+import { toJS } from "mobx";
+import { useEffect } from "react";
 
-const RenderJobs = observer(({ selectedTags }) => {
+
+const RenderJobs = observer(({ selectedTags, setJobData }) => {
+
     const jobsToRender = selectedTags.length > 0 
-    ? jobStore.jobs.filter(job =>
+    ? jobStore.getJobs.filter(job =>
       selectedTags.some(tag => job.title.includes(tag.label) || job.skillsrequired.includes(tag.label) || job.location.includes(tag.label))
     )
-    : jobStore.jobs;
+    : jobStore.getJobs;
+
+    useEffect(() => {
+        setJobData(jobStore.getJobs[0]);
+    }, [setJobData])
+    
 
     return (
-        <Box display="flex" flexDirection="row">
         <Container sx={{ 
             overflow: 'auto', 
             maxHeight: '80vh', 
@@ -31,10 +38,10 @@ const RenderJobs = observer(({ selectedTags }) => {
                 borderRadius: '4px',
             }
         }}>
-            <Grid container direction="column" spacing={2}>
+            <Grid container direction="column" spacing={2} paddingBottom={1}>
                 {jobsToRender.map((job, index) => (
                     <Grid item xs={12} key={index}>
-                        <Card elevation={3} sx={{ display: 'flex', maxHeight: '7em', flexDirection: 'row' }}>
+                        <Card onClick={() => setJobData(toJS(job))} elevation={3} sx={{ display: 'flex', maxHeight: '7em', flexDirection: 'row' }}>
                             <Box sx={{ width: '20%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                 <Box component="img" src={`/images/${job.companyimage}`} alt="Company Logo" sx={{ maxHeight: '4em', maxWidth: '100%' }} />
                             </Box>
@@ -63,8 +70,6 @@ const RenderJobs = observer(({ selectedTags }) => {
                 ))}
             </Grid>
         </Container>
-        <JobInfo />
-    </Box>
     );
 })
 

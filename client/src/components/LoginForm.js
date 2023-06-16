@@ -22,11 +22,12 @@ const LoginForm = observer(() => {
         const password = data.get('password');
 
         try {
-            await userStore.login(email, password);
-            navigate("/");
+            const response = await userStore.login(email, password);
+            if(response)
+              navigate('/');
         } 
         catch (error) {
-                notify('Wrong email or password!', 'error'); 
+            notify('Wrong email or password!', 'error'); 
         }
     };
 
